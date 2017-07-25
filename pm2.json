@@ -1,0 +1,30 @@
+{
+  "apps": [
+    {
+	"name": "watchmen-web",
+	"script": "./run-web-server.js",
+	"exec_mode": "fork_mode",
+	"log_date_format": "YYYY-MM-DD",
+	"env": {
+		"WATCHMEN_BASE_URL": "http://watchmen.base.local",
+		"WATCHMEN_GOOGLE_CLIENT_ID": "3XXXXXXXXXXXXXXXXX.apps.googleusercontent.com",
+		"WATCHMEN_GOOGLE_CLIENT_SECRET": "XXXXXXXX-XXXXXXXXXXXXXXX",
+		"WATCHMEN_WEB_PORT": 3000,
+		"WATCHMEN_REDIS_PORT_PRODUCTION": 6379,
+		"NODE_ENV": "production",
+		"WATCHMEN_ADMINS": "???@gmail.com"
+	}
+    },
+    {
+	"name": "watchmen-monitor",
+	"script": "./run-monitor-server.js",
+	"exec_mode": "fork_mode",
+	"log_date_format": "YYYY-MM-DD",
+	"env": {
+		"WATCHMEN_REDIS_PORT_PRODUCTION": 6379,
+		"NODE_ENV": "production"
+	}
+    }
+
+  ]
+}
