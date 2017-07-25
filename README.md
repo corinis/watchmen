@@ -193,6 +193,9 @@ https://www.npmjs.com/package/watchmen-ping-nightmare
 
 Ping services are npm modules with the ``'watchmen-ping'`` prefix.
 
+Alternatively you can add new ping services directly by creating a file with the pattern  "plugins/watchmen-ping-{PLUGINNAME}.js". 
+The local plugin loader will load these as well. You can use one the existing watchmen-ping-json-api.js as template.
+
 For example, if you want to create a smtp ping service:
 
 #### a) create a watchmen-ping-smtp module and publish it. This is how a simple HTTP ping service looks like:
@@ -257,6 +260,8 @@ https://github.com/iloire/watchmen-plugin-console
 ### Creating your own custom plugin
 
 A ``watchmen`` instance will be injected through your plugin constructor. Then you can subscribe to the desired events. Best is to show it through an example.
+
+You can have custom plugins also in "/plugins/watchmen-plugin-{NAME}.js" (see watchmen-plugin-mail.js)
 
 This what the console plugin looks like:
 

@@ -1,4 +1,5 @@
 var express = require('express');
+var glob = require('glob');
 var path = require('path');
 
 exports = module.exports.getRoutes = function (){
@@ -38,6 +39,18 @@ exports = module.exports.getRoutes = function (){
         name: pluginName.replace(PREFIX_PING_PLUGIN, ''),
         options: getOptions(pluginName)
       };
+    });
+
+	console.log(JSON.stringify(plugins, null, " "));
+    var lmods = glob.sync("./plugins/"+PREFIX_PING_PLUGIN+"*.js");
+    lmods.forEach(function(lmod){
+	lmod = lmod.substring(0, lmod.length-3);
+	var modName = lmod.replace("./plugins/"+PREFIX_PING_PLUGIN, '');
+	console.log("adding: " + modName);
+	plugins.push({
+	  name: modName,
+	  options: getOptions('../../'+lmod)
+	});
     });
 
     return res.json(plugins);
